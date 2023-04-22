@@ -1,0 +1,6 @@
+{
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "compile-hero.disable-compile-files-on-did-save-code": false,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+}
