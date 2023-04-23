@@ -197,7 +197,7 @@ const Navigation = () => {
       sx={{ transition: "all .3s ease-in" }}
       borderBottom={!isAtTop || isShowSideBar ? "2px" : "0"}
       borderStyle="solid"
-      background={colors.shark}
+      background={colors.shark2}
       borderRadius="0 20px 0 20px"
       border="1px solid"
       borderColor={colors.mineShaft}

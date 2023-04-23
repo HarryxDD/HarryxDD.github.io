@@ -6,14 +6,14 @@ import {
   ListItem,
   Text,
   Tooltip,
-  UnorderedList
+  UnorderedList,
 } from "@chakra-ui/react";
-import {avatar} from "assets/images";
-import {AppCol, AppRow} from "components/elements";
+import { avatar } from "assets/images";
+import { AppCol, AppRow } from "components/elements";
 import AppImage from "components/elements/AppImage";
-import {AppLink} from "components/elements/AppLink";
-import {personalCardIcons, PERSONAL_INFOS} from "constants/personal-card";
-import {colors} from "theme";
+import { AppLink } from "components/elements/AppLink";
+import { personalCardIcons, PERSONAL_INFOS } from "constants/personal-card";
+import { colors } from "theme";
 import React from "react";
 
 const PersonalCard = () => {
@@ -97,7 +97,9 @@ const PersonalCard = () => {
                           background={colors.white}
                           borderRadius={10}
                         >
-                          {info.value}
+                          <Text overflow="hidden" textOverflow="ellipsis">
+                            {info.value}
+                          </Text>
                         </Tooltip>
                       </AppLink>
                     ) : (

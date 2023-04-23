@@ -1,10 +1,13 @@
 import {Box} from '@chakra-ui/react';
+import ArticleTitle from 'components/shared/ArticleTitle';
 import React from 'react'
 
 const ResumePage = () => {
   return (
     <Box>
-      Resume Page
+      <ArticleTitle>
+        Resume
+      </ArticleTitle>
     </Box>
   )
 }

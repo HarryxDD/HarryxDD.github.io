@@ -14,3 +14,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+::-moz-selection { /* Code for Firefox */
+  color: black;
+  background: #ffdf80;
+}
+
+::selection {
+  color: black;
+  background: #ffdf80;
+}
