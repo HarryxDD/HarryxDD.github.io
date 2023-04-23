@@ -1,17 +1,17 @@
-import { Box, Container, Flex, Icon, useMediaQuery } from "@chakra-ui/react";
-import { AppRow, BasicRoute } from "components/elements";
-import { AppLink } from "components/elements/AppLink";
-import { MobileNavigation } from "components/layouts/MobileNavigation";
-import { QUERY_LG_DESKTOP, QUERY_MOBILE } from "constants/app";
-import React, { useEffect, useRef } from "react";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { MdOutlineClose } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory, useLocation } from "react-router-dom";
-import { RootState } from "redux/root-reducer";
-import { AppDispatch } from "redux/root-store";
-import { showMobileMenu } from "redux/ui/slice";
-import { routes } from "routes";
+import {Box, Container, Flex, Icon, useMediaQuery} from "@chakra-ui/react";
+import {AppRow, BasicRoute} from "components/elements";
+import {AppLink} from "components/elements/AppLink";
+import {MobileNavigation} from "components/layouts/MobileNavigation";
+import {QUERY_LG_DESKTOP, QUERY_MOBILE} from "constants/app";
+import React, {useEffect, useRef} from "react";
+import {HiOutlineMenuAlt3} from "react-icons/hi";
+import {MdOutlineClose} from "react-icons/md";
+import {useDispatch, useSelector} from "react-redux";
+import {Link, useHistory, useLocation} from "react-router-dom";
+import {RootState} from "redux/root-reducer";
+import {AppDispatch} from "redux/root-store";
+import {showMobileMenu} from "redux/ui/slice";
+import {routes} from "routes";
 
 export const renderMenuItems = (
   item: BasicRoute,
@@ -179,7 +179,7 @@ const Navigation = () => {
       inputRef.current.focus();
     }
   };
-  
+
   useEffect(() => {
     window.onscroll = () => {
       setIsAtTop(window.scrollY < 10);
@@ -188,9 +188,9 @@ const Navigation = () => {
 
   return (
     <Box
-      pos="fixed"
+      pos="absolute"
       right={0}
-      left={0}
+      left="auto"
       top={0}
       bg={!isAtTop || isShowSideBar ? "white" : "transparent"}
       zIndex={999}

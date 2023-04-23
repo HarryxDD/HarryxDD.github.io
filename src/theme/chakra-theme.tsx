@@ -53,8 +53,11 @@ const styles = {
   global: (props: any) => ({
     body: {
       color: mode('gray.800', '#FAFAFA')(props),
-      bg: mode('gray.100', '#1e1e1f')(props),
+      bg: mode('gray.100', '#121212')(props),
     },
+    "*, *::before, ::after": {
+      wordWrap: "normal"
+    }
   }),
 };
 

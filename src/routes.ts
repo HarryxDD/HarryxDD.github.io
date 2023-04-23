@@ -1,8 +1,10 @@
 import {BasicRoute} from "components/elements/AppRouter";
 import Layout from "components/layouts/Layout";
 import {PAGES} from "constants/app";
-import HomePage from "pages/home-page/page";
-import TestPage from "pages/test-page/page";
+import AboutPage from "pages/about/page";
+import ContactPage from "pages/contact/page";
+import PortfolioPage from "pages/portfolio/page";
+import ResumePage from "pages/resume/page";
 import {FaRegCompass} from "react-icons/fa";
 
 export const routes: BasicRoute[] = [
@@ -11,12 +13,26 @@ export const routes: BasicRoute[] = [
     component: Layout,
     exact: false,
     routes: [
-      { path: "/", component: HomePage, exact: true },
+      { path: "/", component: AboutPage, exact: true },
       {
-        path: PAGES.TEST_PAGE,
-        label: "Test",
+        path: PAGES.RESUME_PAGE,
+        label: "Resume",
         icon: FaRegCompass,
-        component: TestPage,
+        component: ResumePage,
+        exact: true,
+      },
+      {
+        path: PAGES.PORTFOLIO_PAGE,
+        label: "Portfolio",
+        icon: FaRegCompass,
+        component: PortfolioPage,
+        exact: true,
+      },
+      {
+        path: PAGES.CONTACT_PAGE,
+        label: "Contact",
+        icon: FaRegCompass,
+        component: ContactPage,
         exact: true,
       },
     ],

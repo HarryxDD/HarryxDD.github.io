@@ -1,4 +1,7 @@
 export const PAGES = {
+    RESUME_PAGE: '/resume',
+    PORTFOLIO_PAGE: '/portfolio',
+    CONTACT_PAGE: '/contact',
     TEST_PAGE: '/test-page'
 };
 

@@ -1,9 +1,5 @@
-import Logo from './imaginary.png'
-import placeholderImage from './placeholder-image.jpg'
-import placeholderUpload from './uploadplaceholder.png'
+import avatar from './ceberus.jpg'
 
 export {
-    Logo,
-    placeholderImage,
-    placeholderUpload
+    avatar
 }

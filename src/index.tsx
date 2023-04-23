@@ -17,7 +17,6 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-console.log(uiTheme)
 root.render(
   <React.StrictMode>
     <Provider store={RootStore}>
