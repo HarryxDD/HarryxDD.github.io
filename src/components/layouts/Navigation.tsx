@@ -12,6 +12,7 @@ import {RootState} from "redux/root-reducer";
 import {AppDispatch} from "redux/root-store";
 import {showMobileMenu} from "redux/ui/slice";
 import {routes} from "routes";
+import {colors} from "theme";
 
 export const renderMenuItems = (
   item: BasicRoute,
@@ -111,7 +112,6 @@ const SingleMenuItem = ({
             as={Link}
             to={fullPath}
             fontSize="xl"
-            color="black"
             _focus={{ boxShadow: "none" }}
             _hover={{ color: isActive ? undefined : "harry.700" }}
             zIndex={2}
@@ -131,7 +131,7 @@ const SingleMenuItem = ({
   return (
     <Box
       key={`menu-${fullPath}`}
-      fontWeight="bold"
+      fontWeight="500"
       _hover={{ cursor: "pointer" }}
     >
       <AppRow px={5} alignItems="flex-end">
@@ -139,10 +139,10 @@ const SingleMenuItem = ({
           as={Link}
           _focus={{ boxShadow: "none" }}
           to={fullPath}
-          color="harry.200"
-          _hover={{ color: isActive ? undefined : "harry.700" }}
+          color={isActive ? "harry.200" : "whiteAlpha.800"}
+          _hover={{ color: !isActive ? "whiteAlpha.400" : "harry.700" }}
           zIndex={2}
-          fontSize="md"
+          fontSize="sm"
           letterSpacing="1px"
         >
           {item.label}
@@ -197,11 +197,14 @@ const Navigation = () => {
       sx={{ transition: "all .3s ease-in" }}
       borderBottom={!isAtTop || isShowSideBar ? "2px" : "0"}
       borderStyle="solid"
-      borderColor="rgb(227, 227, 227)"
+      background={colors.shark}
+      borderRadius="0 20px 0 20px"
+      border="1px solid"
+      borderColor={colors.mineShaft}
     >
-      <Container maxW="container" px="3rem">
-        <Flex py={4} gap={6} alignItems="center">
-          <AppRow align="flex-end" flex={!isDesktop ? "1" : undefined}>
+      <Container maxW="container" px="2rem">
+        <Flex py={6} alignItems="center">
+          <AppRow>
             <AppLink
               as={Link}
               to="/"
@@ -212,7 +215,6 @@ const Navigation = () => {
           {isLargeDesktop && (
             <AppRow
               alignItems="center"
-              justifyContent="flex-end"
               color={isHomePage && isAtTop ? "white" : "black"}
             >
               {routes.map((item) => {

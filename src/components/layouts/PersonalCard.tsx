@@ -24,6 +24,7 @@ const PersonalCard = () => {
       width="auto"
       overflow="hidden"
       maxHeight="max-content"
+      height="fit-content"
       background={colors.shark}
       borderRadius="20px"
       border="1px solid"

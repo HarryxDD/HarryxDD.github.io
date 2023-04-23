@@ -32,7 +32,7 @@ const omitRouteRenderProps = (route: BasicRoute) => {
 };
 
 const NotFoundPageDefault = () => {
-  return <Redirect to={"/"} />;
+  return <Redirect to={"/about"} />;
 };
 
 export const AppRouter = memo(function AppRouter({

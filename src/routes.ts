@@ -13,7 +13,7 @@ export const routes: BasicRoute[] = [
     component: Layout,
     exact: false,
     routes: [
-      { path: "/", component: AboutPage, exact: true },
+      { path: "/about", label: "About", component: AboutPage, exact: true },
       {
         path: PAGES.RESUME_PAGE,
         label: "Resume",
