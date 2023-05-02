@@ -7,53 +7,58 @@ import {
   ListItem,
   OrderedList,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { AppRow } from "components/elements";
 import { AppTitle } from "components/elements/AppTitle";
 import ArticleTitle from "components/shared/ArticleTitle";
-import { EDUCATION, EXPERIENCE, SKILLS } from "constants/resume";
+import { QUERY_LG_DESKTOP } from "constants/app";
+import { EDUCATION, EXPERIENCE, HONORS, SKILLS } from "constants/resume";
 import React from "react";
 import { IconType } from "react-icons";
 import { HiOutlineBookOpen, HiOutlineBriefcase } from "react-icons/hi";
 import { colors } from "theme";
 
 interface ResumeListProps {
-  icon: IconType;
-  title: string;
+  icon?: IconType;
+  title?: string;
   resumeList: { id: number; title: string; time: string; desc: string }[];
 }
 
 const ResumeListItem = ({ icon, title, resumeList }: ResumeListProps) => {
   return (
     <Box my={9}>
-      <AppRow alignItems="center" gap="16px" marginBottom="25px">
-        <Center
-          backgroundColor={colors.shark3}
-          width="48px"
-          height="48px"
-          pos="relative"
-          borderRadius={"12px"}
-          background="linear-gradient( to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50% );"
-          zIndex="1"
-          boxShadow="-4px 8px 24px hsla(0, 0%, 0%, 0.125)"
-          _before={{
-            inset: "0.07em",
-            position: "absolute",
-            content: '""',
-            background: `${colors.shark3}`,
-            borderRadius: "inherit",
-            zIndex: "-1",
-          }}
-        >
-          <Icon
-            boxSize={5}
-            color="harry.200"
-            as={icon}
-            borderRadius="inherit"
-          />
-        </Center>
-        <AppTitle>{title}</AppTitle>
-      </AppRow>
+      {icon && title && (
+        <AppRow alignItems="center" gap="16px" marginBottom="25px">
+          <Center
+            backgroundColor={colors.shark3}
+            width="48px"
+            height="48px"
+            pos="relative"
+            borderRadius={"12px"}
+            background="linear-gradient( to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50% );"
+            zIndex="1"
+            boxShadow="-4px 8px 24px hsla(0, 0%, 0%, 0.125)"
+            _before={{
+              inset: "0.07em",
+              position: "absolute",
+              content: '""',
+              background: `${colors.shark3}`,
+              borderRadius: "inherit",
+              zIndex: "-1",
+            }}
+          >
+            <Icon
+              boxSize={5}
+              color="harry.200"
+              as={icon}
+              borderRadius="inherit"
+            />
+          </Center>
+          <AppTitle>{title}</AppTitle>
+        </AppRow>
+      )}
+
       <OrderedList ml="65px" listStyleType="none">
         {resumeList.map((item) => (
           <ListItem
@@ -65,10 +70,11 @@ const ResumeListItem = ({ icon, title, resumeList }: ResumeListProps) => {
               _before: {
                 content: '""',
                 pos: "absolute",
-                top: "-25px",
+                top: !title && !icon ? "5px" : "-25px",
                 left: "-42px",
                 width: "1px",
-                height: "calc(100% + 50px)",
+                height:
+                  !title && !icon ? "calc(100% + 30px)" : "calc(100% + 50px)",
                 background: colors.mineShaft,
               },
             }}
@@ -99,6 +105,9 @@ const ResumeListItem = ({ icon, title, resumeList }: ResumeListProps) => {
 };
 
 const ResumePage = () => {
+  const [isLargeDesktop] = useMediaQuery(`(min-width: ${QUERY_LG_DESKTOP})`, {
+    ssr: false,
+  });
   return (
     <Box>
       <ArticleTitle>Resume</ArticleTitle>
@@ -114,7 +123,10 @@ const ResumePage = () => {
       />
       <Box>
         <AppTitle mb={5}>Skills</AppTitle>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+        <Grid
+          templateColumns={isLargeDesktop ? "repeat(2, 1fr)" : "repeat(1, 1fr)"}
+          gap={6}
+        >
           {SKILLS.map((skill) => (
             <GridItem
               colSpan={1}
@@ -150,6 +162,10 @@ const ResumePage = () => {
           ))}
         </Grid>
       </Box>
+      <Box mt={12}>
+        <AppTitle mb={5}>Honors & Awards</AppTitle>
+      </Box>
+      <ResumeListItem resumeList={HONORS} />
     </Box>
   );
 };

@@ -1,11 +1,15 @@
-import { Box, Button, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem, Text, useMediaQuery } from "@chakra-ui/react";
 import { AppTitle } from "components/elements/AppTitle";
 import ArticleTitle from "components/shared/ArticleTitle";
 import { WHAT_I_DO } from "constants/about";
+import {QUERY_LG_DESKTOP} from "constants/app";
 import React from "react";
 import { colors } from "theme";
 
 const AboutPage = () => {
+  const [isLargeDesktop] = useMediaQuery(`(min-width: ${QUERY_LG_DESKTOP})`, {
+    ssr: false,
+  });
   return (
     <Box>
       <ArticleTitle>About Me</ArticleTitle>
@@ -19,9 +23,16 @@ const AboutPage = () => {
         to work in a difficult setting, I have the confidence to take on
         difficult tasks and am willing to correct my mistakes.
       </Text>
-      <Button fontSize="14px" height='40px' padding={5}>Download resume</Button>
-      <AppTitle mt={12} marginBottom={5}>What I Do</AppTitle>
-      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+      <Button fontSize="14px" height="40px" padding={5}>
+        Download resume
+      </Button>
+      <AppTitle mt={12} marginBottom={5}>
+        What I Do
+      </AppTitle>
+      <Grid
+        templateColumns={isLargeDesktop ? "repeat(2, 1fr)" : "repeat(1, 1fr)"}
+        gap={6}
+      >
         {WHAT_I_DO.map((service) => (
           <GridItem
             colSpan={1}

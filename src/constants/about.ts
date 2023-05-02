@@ -9,4 +9,9 @@ export const WHAT_I_DO = [
     title: "Student Mentor",
     desc: "Support beginners in their learning, research, and website-building.",
   },
+  {
+    id: 3,
+    title: "Design",
+    desc: "Design non-specialist websites or apps to learn about customer psychology and improve the quality of the work.",
+  },
 ];

@@ -58,3 +58,18 @@ export const SKILLS = [
         desc: " Have good communication abilities, an attitude to contribute, and a thirst for knowledge."
     },
 ]
+
+export const HONORS = [
+    {
+        id: 1,
+        title: "Best Performance",
+        time: "07/2021 - 08/2021",
+        desc: "Summer Internship - Software Assistant Intern at Hekate"
+    },
+    {
+        id: 2,
+        title: "Honorary Scholarship",
+        time: "2021",
+        desc: "VNUK Institute for Research and Executive Education"
+    },
+]

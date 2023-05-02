@@ -23,8 +23,7 @@ import { showMobileMenu } from "redux/ui/slice";
 import { routes } from "routes";
 
 export const MobileNavigation = memo(() => {
-  const isShow =
-    useSelector((state: RootState) => state.ui.menu.isShowMobileMenu) || false;
+  const isShow = true;
   const dispatch: AppDispatch = useDispatch();
   const [isDesktop] = useMediaQuery(`(min-width: ${QUERY_MOBILE})`, {
     ssr: false,
@@ -35,34 +34,24 @@ export const MobileNavigation = memo(() => {
   };
 
   return (
-    <Drawer
-      placement="right"
-      isOpen={isShow}
-      onClose={closeDrawer}
-      size={isDesktop ? "sm" : "full"}
+    <Box
+      pos="fixed"
+      bottom="0"
+      left="0"
+      width="100%"
+      background="hsla(240, 1%, 17%, 0.75)"
+      backdropFilter="blur(10px)"
+      height="55px"
+      border="1px solid hsl(0, 0%, 22%)"
+      borderRadius="12px 12px 0 0"
+      boxShadow="0 16px 30px hsla(0, 0%, 0%, 0.25)"
+      zIndex="5"
     >
-      <DrawerContent
-        minH="calc(100vh - 80px)"
-        mt="80px"
-        borderTop={isDesktop ? "2px" : "0"}
-        borderStyle="solid"
-        borderColor="rgb(227, 227, 227)"
-      >
-        <DrawerBody mt={7}>
-          {routes.map((item) => {
-            return renderMenuItems(item, "", true, true, closeDrawer);
-          })}
-          <Divider />
-        </DrawerBody>
-        <DrawerFooter
-          borderTop={isDesktop ? "2px" : "0"}
-          borderStyle="solid"
-          borderColor="rgb(227, 227, 227)"
-          alignItems="center"
-          justifyContent="center"
-        >
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+      <AppRow width="100%" height="inherit" alignItems="center" justifyContent="center">
+        {routes.map((item) => {
+          return renderMenuItems(item);
+        })}
+      </AppRow>
+    </Box>
   );
 });

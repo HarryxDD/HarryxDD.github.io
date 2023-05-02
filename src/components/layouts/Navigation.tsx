@@ -1,18 +1,18 @@
-import {Box, Container, Flex, Icon, useMediaQuery} from "@chakra-ui/react";
-import {AppRow, BasicRoute} from "components/elements";
-import {AppLink} from "components/elements/AppLink";
-import {MobileNavigation} from "components/layouts/MobileNavigation";
-import {QUERY_LG_DESKTOP, QUERY_MOBILE} from "constants/app";
-import React, {useEffect, useRef} from "react";
-import {HiOutlineMenuAlt3} from "react-icons/hi";
-import {MdOutlineClose} from "react-icons/md";
-import {useDispatch, useSelector} from "react-redux";
-import {Link, useHistory, useLocation} from "react-router-dom";
-import {RootState} from "redux/root-reducer";
-import {AppDispatch} from "redux/root-store";
-import {showMobileMenu} from "redux/ui/slice";
-import {routes} from "routes";
-import {colors} from "theme";
+import { Box, Container, Flex, Icon, useMediaQuery } from "@chakra-ui/react";
+import { AppRow, BasicRoute } from "components/elements";
+import { AppLink } from "components/elements/AppLink";
+import { MobileNavigation } from "components/layouts/MobileNavigation";
+import { QUERY_LG_DESKTOP, QUERY_MOBILE } from "constants/app";
+import React, { useEffect, useRef } from "react";
+import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import { MdOutlineClose } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { RootState } from "redux/root-reducer";
+import { AppDispatch } from "redux/root-store";
+import { showMobileMenu } from "redux/ui/slice";
+import { routes } from "routes";
+import { colors } from "theme";
 
 export const renderMenuItems = (
   item: BasicRoute,
@@ -79,7 +79,9 @@ const SingleMenuItem = ({
   cb: any;
 }) => {
   const { pathname } = useLocation();
-
+  const [isDesktop] = useMediaQuery(`(min-width: ${QUERY_MOBILE})`, {
+    ssr: false,
+  });
   const fullPath =
     parentPath && parentPath !== "/" ? `${parentPath}${item.path}` : item.path;
   const isActive = pathname.includes(fullPath);
@@ -142,7 +144,7 @@ const SingleMenuItem = ({
           color={isActive ? "harry.200" : "whiteAlpha.800"}
           _hover={{ color: !isActive ? "whiteAlpha.400" : "harry.700" }}
           zIndex={2}
-          fontSize="sm"
+          fontSize={isDesktop ? "sm" : "11px"}
           letterSpacing="1px"
         >
           {item.label}
@@ -158,9 +160,6 @@ const Navigation = () => {
   const isShowSideBar =
     useSelector((state: RootState) => state.ui.menu.isShowMobileMenu) || false;
   const [isAtTop, setIsAtTop] = React.useState(true);
-  const [isDesktop] = useMediaQuery(`(min-width: ${QUERY_MOBILE})`, {
-    ssr: false,
-  });
   const [isLargeDesktop] = useMediaQuery(`(min-width: ${QUERY_LG_DESKTOP})`, {
     ssr: false,
   });
@@ -197,9 +196,9 @@ const Navigation = () => {
       sx={{ transition: "all .3s ease-in" }}
       borderBottom={!isAtTop || isShowSideBar ? "2px" : "0"}
       borderStyle="solid"
-      background={colors.shark2}
+      background={isLargeDesktop && colors.shark2}
       borderRadius="0 20px 0 20px"
-      border="1px solid"
+      border={isLargeDesktop ? "1px solid" : 0}
       borderColor={colors.mineShaft}
     >
       <Container maxW="container" px="2rem">
@@ -222,7 +221,7 @@ const Navigation = () => {
               })}
             </AppRow>
           )}
-          {!isLargeDesktop && (
+          {/* {!isLargeDesktop && (
             <Icon
               as={!isShowSideBar ? HiOutlineMenuAlt3 : MdOutlineClose}
               boxSize={"2.3rem"}
@@ -232,7 +231,7 @@ const Navigation = () => {
                 isHomePage && isAtTop && !isShowSideBar ? "white" : "black"
               }
             />
-          )}
+          )} */}
         </Flex>
       </Container>
     </Box>

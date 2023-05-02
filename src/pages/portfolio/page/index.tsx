@@ -8,15 +8,23 @@ import {
   TabPanels,
   Tabs,
   Text,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import AppImage from "components/elements/AppImage";
 import ArticleTitle from "components/shared/ArticleTitle";
+import { QUERY_LG_DESKTOP, QUERY_MOBILE } from "constants/app";
 import { CATEGORIES, PROJECTS } from "constants/portfolio";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
 const PortfolioPage = () => {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
+  const [isLargeDesktop] = useMediaQuery(`(min-width: 1200px)`, {
+    ssr: false,
+  });
+  const [isDesktop] = useMediaQuery(`(min-width: 600px)`, {
+    ssr: false,
+  });
 
   const handleFilterProjects = (cate: string) => {
     if (!cate || cate === "all") {
@@ -49,7 +57,16 @@ const PortfolioPage = () => {
           {CATEGORIES.map((cate) => (
             <TabPanel key={cate.id} padding="0" mt={5}>
               <motion.div layout>
-                <Grid templateColumns="repeat(3, 1fr)" gap="32px">
+                <Grid
+                  templateColumns={
+                    isLargeDesktop
+                      ? "repeat(3, 1fr)"
+                      : isDesktop
+                      ? "repeat(2, 1fr)"
+                      : "repeat(1, 1fr)"
+                  }
+                  gap="32px"
+                >
                   {currentProjects.map((proj) => (
                     <GridItem key={proj.id} colSpan={1}>
                       <motion.div
