@@ -20,7 +20,7 @@ const AboutPage = () => {
         difficult tasks and am willing to correct my mistakes.
       </Text>
       <Button fontSize="14px" height='40px' padding={5}>Download resume</Button>
-      <AppTitle mt={12}>What I Do</AppTitle>
+      <AppTitle mt={12} marginBottom={5}>What I Do</AppTitle>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {WHAT_I_DO.map((service) => (
           <GridItem
@@ -42,7 +42,7 @@ const AboutPage = () => {
                 "linear-gradient( to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100% ), hsl(240, 2%, 13%);",
             }}
           >
-            <Text fontSize="18px" fontWeight="600" mb="7px">
+            <Text fontSize="18px" fontWeight="600" mb="10px">
               {service.title}
             </Text>
             <Text
