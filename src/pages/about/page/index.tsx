@@ -10,6 +10,18 @@ const AboutPage = () => {
   const [isLargeDesktop] = useMediaQuery(`(min-width: ${QUERY_LG_DESKTOP})`, {
     ssr: false,
   });
+
+  const handleDownloadResume = () => {
+    try {
+      const element = document.createElement('a');
+      element.href = 'Truong_Ha_Vu_CV.pdf';
+      element.download = 'Truong_Ha_Vu_CV.pdf';
+      element.click();
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <Box>
       <ArticleTitle>About Me</ArticleTitle>
@@ -23,7 +35,7 @@ const AboutPage = () => {
         to work in a difficult setting, I have the confidence to take on
         difficult tasks and am willing to correct my mistakes.
       </Text>
-      <Button fontSize="14px" height="40px" padding={5}>
+      <Button fontSize="14px" height="40px" padding={5} onClick={handleDownloadResume}>
         Download resume
       </Button>
       <AppTitle mt={12} marginBottom={5}>
