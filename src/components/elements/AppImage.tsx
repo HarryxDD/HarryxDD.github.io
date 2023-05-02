@@ -30,6 +30,7 @@ const AppImage = ({
         objectFit={objectFit}
         onError={() => setImageSrc("placeholder")}
         className={classNames({ inline })}
+        {...rest}
       />
     </div>
   );

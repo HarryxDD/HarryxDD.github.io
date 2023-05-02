@@ -40,7 +40,7 @@ export const EXPERIENCE = [
     },
     {
         id: 5,
-        title: "AI assistant Intern - Hekate",
+        title: "AI Assistant Intern - Hekate",
         time: "07/2021 - 08/2021",
         desc: "Working as an AI intern, learning about models and preparing necessary data.",
     },
