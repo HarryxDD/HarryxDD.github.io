@@ -2,20 +2,23 @@ import {
   Box,
   Grid,
   GridItem,
+  Icon,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
   Text,
-  useMediaQuery,
+  useMediaQuery
 } from "@chakra-ui/react";
 import AppImage from "components/elements/AppImage";
+import {AppLink} from "components/elements/AppLink";
 import ArticleTitle from "components/shared/ArticleTitle";
-import { QUERY_LG_DESKTOP, QUERY_MOBILE } from "constants/app";
-import { CATEGORIES, PROJECTS } from "constants/portfolio";
-import { motion } from "framer-motion";
-import React, { useState } from "react";
+import {CATEGORIES, PROJECTS} from "constants/portfolio";
+import {motion} from "framer-motion";
+import React, {useState} from "react";
+import {HiOutlineEye} from "react-icons/hi";
+import {colors} from "theme";
 
 const PortfolioPage = () => {
   const [currentProjects, setCurrentProjects] = useState(PROJECTS);
@@ -84,12 +87,48 @@ const PortfolioPage = () => {
                           height="200px"
                           mb="15px"
                         >
+                          <AppLink
+                            pos="absolute"
+                            top="50%"
+                            left="50%"
+                            transform="translate(-50%, -50%) scale(0.6)"
+                            borderRadius="14px"
+                            background={colors.mineShaft}
+                            padding="14px"
+                            cursor="pointer"
+                            href={proj.link}
+                            target="_blank"
+                            zIndex="6"
+                            opacity="0"
+                            transition="all 0.3s ease"
+                            _groupHover={{
+                              opacity: "1",
+                              transform: "translate(-50%, -50%) scale(1)",
+                            }}
+                          >
+                            <Box
+                              display="flex"
+                              alignItems="center"
+                              justifyContent="center"
+                            >
+                              <Icon
+                                as={HiOutlineEye}
+                                boxSize={5}
+                                color="harry.200"
+                              />
+                            </Box>
+                          </AppLink>
                           <AppImage
-                            height="250px"
+                            height="200px"
                             objectFit="cover"
                             transition="all 0.3s ease"
                             url={proj.img}
-                            _groupHover={{ transform: "scale(1.1)" }}
+                            zIndex="5"
+                            background={colors.black}
+                            _groupHover={{
+                              transform: "scale(1.1)",
+                              opacity: "0.4",
+                            }}
                           />
                         </Box>
                         <Text fontSize="15px" fontWeight="500">
